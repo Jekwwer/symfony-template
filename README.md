@@ -1,7 +1,6 @@
 # Symfony Project Template
 
-This repository serves as a template for creating Symfony projects with a fully configured development environment,
-including Docker-based devcontainer support, Dependabot integration, and pre-configured tools for PHP development.
+This repository serves as a template for creating Symfony projects with a fully configured development environment, including Docker-based devcontainer support, Dependabot integration, pre-configured tools, and a deploy workflow for GitHub Pages.
 
 ## Features
 
@@ -12,6 +11,7 @@ including Docker-based devcontainer support, Dependabot integration, and pre-con
 - **Preconfigured PHPUnit**: Testing framework for unit and functional tests.
 - **Xdebug Configuration**: Preconfigured for debugging with VSCode.
 - **Makefile**: Convenient shortcuts for common tasks.
+- **Deploy Workflow**: GitHub Actions workflow for deploying to GitHub Pages.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ including Docker-based devcontainer support, Dependabot integration, and pre-con
 
    - The application will be available at `http://localhost:8000`.
 
-Debugging with Xdebug
+## Debugging with Xdebug
 
 This template includes Xdebug for PHP debugging. Xdebug is configured to listen for incoming connections, making it easy to debug with VSCode.
 
@@ -54,7 +54,9 @@ This template includes Xdebug for PHP debugging. Xdebug is configured to listen 
 - **`tests/`**: PHPUnit tests.
 - **`templates/`**: Twig templates for HTML rendering.
 - **`.devcontainer/`**: Docker and devcontainer configuration files.
+- **`.env`** and **`.env.test`**: Environment variable files for development and testing.
 - **`.github/dependabot.yml`**: Dependabot configuration for automated dependency updates.
+- **`.github/workflows/deploy.yml`**: GitHub Actions workflow for deploying the project to GitHub Pages.
 
 ## Available Commands
 
@@ -88,10 +90,14 @@ This template uses Dependabot to keep dependencies up-to-date:
 - **GitHub Actions**: `.github` workflows.
 - **Composer**: PHP dependencies.
 
+## Deployment
+
+This project includes a deploy workflow to publish the application to GitHub Pages. It builds a static version of the Symfony application and deploys it to the `gh-pages` branch.
+You can view the deployed application [here](https://jekwwer.github.io/symfony-template/).
+
 ## Customizing
 
-Feel free to modify this template to suit your project's needs. You can add new Symfony bundles,
-customize configurations, or expand the Docker setup as required.
+Feel free to modify this template to suit your project's needs. You can add new Symfony bundles, customize configurations, or expand the Docker setup as required.
 
 ## License
 
