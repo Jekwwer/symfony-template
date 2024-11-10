@@ -12,6 +12,8 @@ ci:
   skip:
     - autoupdate # ci can't run local hooks
     - hadolint # ci can't install system dependencies
+    - phpstan # ci can't run local hooks
+    - phpmd # ci can't run local hooks
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -72,11 +74,12 @@ repos:
     hooks:
       - id: yamllint
         name: "lint yaml files"
-        args:
-          [
-            "--config-data",
-            "{extends: default, rules: {line-length: {max: 88}}}",
-          ]
+        args: [
+          "--config-data",
+          "{extends: default, rules: {line-length: {max: 88},
+          braces: {max-spaces-inside: -1},
+          comments: disable}}",
+        ]
 
   # Formats code with Prettier
   - repo: https://github.com/pre-commit/mirrors-prettier
@@ -91,17 +94,17 @@ repos:
       # Scans PHP files
       - id: phpstan
         name: "php static analysis"
-        entry: phpstan
+        entry: vendor/bin/phpstan
         language: system
         types: [php]
         args: ["analyse", "--memory-limit=512M"]
 
+      # Run Debug before running PHPMD
       - id: phpmd
         name: "php code analysis"
-        entry: phpmd
+        entry: ./scripts/run-phpmd.sh
         language: system
         types: [php]
-        args: ["src", "text", "cleancode,codesize,design,naming,unusedcode"]
 
       # Updates pre-commit hooks versions
       - id: autoupdate
