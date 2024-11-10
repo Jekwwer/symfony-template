@@ -1,0 +1,47 @@
+# .github/workflows/deploy.yml: Deploys Symfony to GitHub Pages
+---
+name: Deploy Symfony to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up PHP
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          tools: composer
+
+      # Install Symfony and Project Dependencies
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      # Build the Static Site
+      - name: Generate Static Site with Wget
+        run: |
+          export APP_ENV=prod
+          php -S 127.0.0.1:8000 -t public & # Start PHP server
+          sleep 10 # Wait for the server to start
+          wget --mirror --convert-links --adjust-extension \
+               --page-requisites --no-parent --level=1 \
+               http://127.0.0.1:8000 || true
+          mkdir -p docs
+          mv 127.0.0.1:8000 docs
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
