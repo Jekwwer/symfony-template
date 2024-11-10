@@ -83,6 +83,7 @@
           "phpmd",
           "phpstan",
           "phpunit",
+          "preconfigured",
           "ryannaddy",
           "Shiliaev",
           "shellcheck",
