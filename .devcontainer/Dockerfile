@@ -10,9 +10,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Define ARGs for the version of each package
-ARG PYTHON_PIP_VERSION=20.3.4-4+deb11u1
-ARG PYTHON_VENV_VERSION=3.9.2-3
-ARG RUBY_VERSION=1:2.7+2
+ARG PYTHON_PIP_VERSION=23.0.1+dfsg-1
+ARG PYTHON_VENV_VERSION=3.11.2-1+b1
+ARG RUBY_VERSION=1:3.1
 ARG HADOLINT_VERSION=v2.12.0
 
 # Install Composer globally

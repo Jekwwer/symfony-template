@@ -30,13 +30,13 @@
         "files.associations": {
           "*.twig": "html"
         },
-        "intelephense.environment.phpVersion": "8.2",
+        "intelephense.environment.phpVersion": "8.3",
         "twig-language-2.format.enable": true,
         "[dockerfile]": {
           "editor.rulers": [120]
         },
         "[html]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
+          "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
         },
         "[javascript]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
