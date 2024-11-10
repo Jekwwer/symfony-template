@@ -1,7 +1,7 @@
 # .devcontainer/Dockerfile: Sets up the development container for the project.
 
 # Base image
-FROM mcr.microsoft.com/vscode/devcontainers/php:0-8.2
+FROM mcr.microsoft.com/vscode/devcontainers/php:8.3
 
 # Set environment variable to non-interactive mode for apt-get installations
 ENV DEBIAN_FRONTEND=noninteractive
