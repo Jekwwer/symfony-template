@@ -10,6 +10,7 @@ including Docker-based devcontainer support, Dependabot integration, and pre-con
 - **VSCode Configuration**: Includes recommended extensions and settings for PHP.
 - **Dependabot**: Automated dependency updates for Composer, Docker, and GitHub Actions.
 - **Preconfigured PHPUnit**: Testing framework for unit and functional tests.
+- **Xdebug Configuration**: Preconfigured for debugging with VSCode.
 - **Makefile**: Convenient shortcuts for common tasks.
 
 ## Prerequisites
@@ -40,6 +41,12 @@ including Docker-based devcontainer support, Dependabot integration, and pre-con
      ```
 
    - The application will be available at `http://localhost:8000`.
+
+Debugging with Xdebug
+
+This template includes Xdebug for PHP debugging. Xdebug is configured to listen for incoming connections, making it easy to debug with VSCode.
+
+> Note: For phpmd, it’s necessary to start debugging; otherwise, the pre-commit hook will fail.
 
 ## Project Structure
 
