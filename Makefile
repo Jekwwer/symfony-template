@@ -18,7 +18,7 @@ test:
 
 # Run tests and generate coverage report
 coverage:
-	php bin/phpunit --coverage-text
+	XDEBUG_MODE=coverage php bin/phpunit --coverage-text
 
 # Clear the Symfony cache
 cache-clear:
