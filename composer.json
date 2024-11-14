@@ -99,7 +99,7 @@
   },
   "require-dev": {
     "phpmd/phpmd": "^2.15",
-    "phpstan/phpstan": "^1.12",
+    "phpstan/phpstan": "^2.0",
     "phpunit/phpunit": "^11.4",
     "symfony/browser-kit": "7.1.*",
     "symfony/css-selector": "7.1.*",
