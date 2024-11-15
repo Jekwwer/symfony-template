@@ -10,10 +10,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Define ARGs for the version of each package
+ARG BUILD_ESSENTIAL_VERSION=12.9
+ARG HADOLINT_VERSION=v2.12.0
+ARG LIBZIP_VERSION=1.7.3-1+b1
 ARG PYTHON_PIP_VERSION=23.0.1+dfsg-1
 ARG PYTHON_VENV_VERSION=3.11.2-1+b1
-ARG RUBY_VERSION=1:3.1
-ARG HADOLINT_VERSION=v2.12.0
+ARG UNZIP_VERSION=6.0-28
 
 # Install Composer globally
 RUN wget -q -O composer-setup.php https://getcomposer.org/installer && \
@@ -34,9 +36,10 @@ RUN echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini \
 # Install additional packages and hadolint
 # DL3047 info: Avoid use of wget without progress bar.
 #              Use `wget --progress=dot:giga <url>`. Or consider using `-q` or `-nv` (for `--quiet` or `--no-verbose`).
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    python3-pip=${PYTHON_PIP_VERSION} python3-venv=${PYTHON_VENV_VERSION} ruby-full=${RUBY_VERSION} && \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential=${BUILD_ESSENTIAL_VERSION} libzip-dev=${LIBZIP_VERSION} unzip=${UNZIP_VERSION} \
+    python3-pip=${PYTHON_PIP_VERSION} python3-venv=${PYTHON_VENV_VERSION} && \
+    docker-php-ext-install zip &&\
     wget --progress=dot:giga -O /usr/local/bin/hadolint https://github.com/hadolint/hadolint/releases/download/${HADOLINT_VERSION}/hadolint-Linux-x86_64 && \
     chmod +x /usr/local/bin/hadolint && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
