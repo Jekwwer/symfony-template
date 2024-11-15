@@ -20,6 +20,14 @@ test:
 coverage:
 	XDEBUG_MODE=coverage php bin/phpunit --coverage-text
 
+# Check for security vulnerabilities with Composer
+audit:
+	composer audit
+
+# Run diagnostics with Composer
+diagnose:
+	composer diagnose
+
 # Clear the Symfony cache
 cache-clear:
 	php bin/console cache:clear

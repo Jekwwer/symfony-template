@@ -66,6 +66,8 @@ You can use the following commands from the Makefile:
 - **`make serve`** - Start the Symfony server.
 - **`make test`** - Run tests with PHPUnit.
 - **`make coverage`** - Run tests with coverage report.
+- **`make audit`** - Run security audits on PHP dependencies.
+- **`make diagnose`** - Diagnose the Symfony application for potential issues.
 - **`make cache-clear`** - Clear Symfony cache.
 
 ## Testing
