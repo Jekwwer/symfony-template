@@ -17,6 +17,10 @@ trim_trailing_whitespace = true
 [*.{dockerignore,editorconfig,gitignore,ini}]
 trim_trailing_whitespace = false
 
+# Makefile-specific settings
+[Makefile]
+indent_style = tab
+
 # Dockerfile-specific settings
 [Dockerfile]
 indent_size = 4
