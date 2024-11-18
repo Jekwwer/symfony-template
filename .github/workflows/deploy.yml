@@ -37,7 +37,8 @@ jobs:
                --page-requisites --no-parent --level=1 \
                http://127.0.0.1:8000 || true
           mkdir -p docs
-          mv 127.0.0.1:8000 docs
+          mv 127.0.0.1:8000/* docs/
+          rm -rf 127.0.0.1:8000
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
